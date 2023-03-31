@@ -56,7 +56,7 @@ First, make sure that you have the following installed on your machine:
 
 ### Important Scripts
 ```sh
-git clone https://github.com/revou-fsse-1/w10-my-web-api-anggr# Clone the repository
+git clone https://github.com/revou-fsse-1/w10-my-web-api-anggr # Clone the repository
 npm install # Install all dependencies
 npm run dev # Start the web
 ```
