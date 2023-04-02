@@ -3,6 +3,7 @@ import { MovieList } from './components/MovieList.js';
 import { LoginForm } from './components/Login.js';
 import { RegisterForm } from './components/Register.js';
 
+
 const app = document.getElementById('app');
 
 const onLoggedIn = () => {

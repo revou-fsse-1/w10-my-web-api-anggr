@@ -19,6 +19,43 @@
       "title": "Wanda",
       "description": "vision's",
       "id": 4
+    },
+    {
+      "title": "winter soldier",
+      "description": "prajurit winter",
+      "id": 5
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "user1",
+      "password": "password1"
+    },
+    {
+      "id": 2,
+      "username": "user2",
+      "password": "user2"
+    },
+    {
+      "username": "okky",
+      "password": "okky",
+      "id": 3
+    },
+    {
+      "username": "leon",
+      "password": "leon",
+      "id": 4
+    },
+    {
+      "username": "orange",
+      "password": "orange",
+      "id": 5
+    },
+    {
+      "username": "sari",
+      "password": "sari",
+      "id": 6
     }
   ]
 }

@@ -1,5 +1,6 @@
+import { loginUser } from "../utils/api.js";
 export const LoginForm = (app, onLoggedIn) => {
-   app.innerHTML = `
+  app.innerHTML = `
      <div class="container mx-auto py-4">
        <h1 class="text-2xl font-bold mb-4">Login</h1>
        <form id="login-form">
@@ -21,22 +22,24 @@ export const LoginForm = (app, onLoggedIn) => {
        </form>
      </div>
    `;
- 
-   const form = app.querySelector("#login-form");
-   form.addEventListener("submit", (event) => {
-     event.preventDefault();
- 
-     const username = form.querySelector("#username").value;
-     const password = form.querySelector("#password").value;
- 
-     // Validate credentials
-     const storedPassword = localStorage.getItem(`user_${username}`);
-     if (storedPassword && storedPassword === password) {
-       localStorage.setItem("loggedIn", "true");
-       onLoggedIn();
-     } else {
-       alert("Invalid username or password!");
-     }
-   });
- };
- 
+
+  const form = app.querySelector("#login-form");
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const username = form.querySelector("#username").value;
+    const password = form.querySelector("#password").value;
+
+    try {
+      const user = await loginUser(username, password);
+      if (user) {
+        localStorage.setItem("loggedIn", "true");
+        onLoggedIn();
+      } else {
+        alert("Invalid username or password!");
+      }
+    } catch (error) {
+      alert("Error logging in user!");
+    }
+  });
+};

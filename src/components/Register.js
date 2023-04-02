@@ -1,3 +1,4 @@
+import { registerUser } from "../utils/api.js";
 export const RegisterForm = (app, onRegistered) => {
   app.innerHTML = `
      <div class="container mx-auto py-4">
@@ -23,16 +24,22 @@ export const RegisterForm = (app, onRegistered) => {
    `;
 
   const form = app.querySelector("#register-form");
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const username = form.querySelector("#username").value;
     const password = form.querySelector("#password").value;
 
-    // Save the user's pass in localStorage
-    localStorage.setItem(`user_${username}`, password);
-
-    alert("Registered successfully!");
-    onRegistered();
+    try {
+      const newUser = await registerUser(username, password);
+      if (newUser) {
+        alert("Registered successfully!");
+        onRegistered();
+      } else {
+        alert("Error registering user!");
+      }
+    } catch (error) {
+      alert("Error registering user!");
+    }
   });
 };

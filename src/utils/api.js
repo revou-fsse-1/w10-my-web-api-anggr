@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_URL = "http://localhost:5000";
+// const API_URL = "http://json-server-blue-nine.vercel.app";
 
 // get all movies
 
@@ -53,6 +54,33 @@ export const updateMovie = async (movieId, data) => {
     return response.data;
   } catch (error) {
     console.error(`Error updating movie with id ${movieId}:`, error);
+    throw error;
+  }
+};
+
+// Register new user
+export const registerUser = async (username, password) => {
+  try {
+    const response = await axios.post(`${API_URL}/users`, {
+      username,
+      password,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error registering user:", error);
+    throw error;
+  }
+};
+
+// Login user
+export const loginUser = async (username, password) => {
+  try {
+    const response = await axios.get(
+      `${API_URL}/users?username=${username}&password=${password}`
+    );
+    return response.data.length > 0 ? response.data[0] : null;
+  } catch (error) {
+    console.error("Error logging in user:", error);
     throw error;
   }
 };
